@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, StatusBar } from "react-native";
 import Login from "./src/screens/Login";
+import Signup from "./src/screens/Signup";
 import Welcome from "./src/screens/Welcome";
 
 export default function App() {
@@ -7,7 +8,8 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="auto" />
       {/* <Welcome /> */}
-      <Login />
+      {/* <Login /> */}
+      <Signup />
     </View>
   );
 }
