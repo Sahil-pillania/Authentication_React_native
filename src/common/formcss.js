@@ -38,6 +38,8 @@ const module = {
     margin: 15,
     height: 130,
     backgroundColor: "#eeb000",
+    textAlignVertical: "top",
+    // maxWidth: 200,
   },
   link: {
     color: "black",

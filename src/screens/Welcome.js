@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import img from "../../assets/code.png";
 import module from "../common/Button";
-const Welcome = () => {
+const Welcome = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.container_one}>
@@ -13,8 +13,18 @@ const Welcome = () => {
         <Image style={styles.welImage} source={img} />
       </View>
       <View style={styles.container_three}>
-        <Text style={styles.button}>Login</Text>
-        <Text style={styles.button}>Signup</Text>
+        <Text
+          style={styles.button}
+          onPress={() => navigation.navigate("login")}
+        >
+          Login
+        </Text>
+        <Text
+          style={styles.button}
+          onPress={() => navigation.navigate("signup")}
+        >
+          Signup
+        </Text>
       </View>
     </View>
   );
@@ -38,7 +48,7 @@ const styles = StyleSheet.create({
   },
 
   welText: {
-    fontSize: 70,
+    fontSize: 50,
     color: "white",
     textAlign: "center",
     padding: 10,
@@ -72,7 +82,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-start",
     flexDirection: "row",
-    paddingTop: 20,
+    paddingTop: 80,
     // height: 12,
   },
   button: {
