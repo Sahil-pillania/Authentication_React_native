@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   container_two: {
-    width: "100%",
+    width: "90%",
     height: "20%",
     backgroundColor: "#eee",
     position: "relative",
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     height: 60,
     position: "absolute",
     top: 50,
-    left: 25,
+    left: 10,
     borderRadius: 14,
   },
   container_three: {
