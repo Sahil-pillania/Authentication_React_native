@@ -5,9 +5,11 @@ const User = require("./models/User");
 const app = express();
 const port = 3000;
 app.use(bodyParser.json());
+const requireToken = require("./middleware/Auth");
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+app.get("/", requireToken, (req, res) => {
+  // console.log(req.user);
+  res.send(req.user);
 });
 
 const routes = require("./routes/authRoutes");
@@ -18,5 +20,5 @@ app.use(routes);
 // });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Auth app listening on port ${port}`);
 });
