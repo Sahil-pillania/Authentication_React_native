@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const router = express.Router();
 const User = mongoose.model("User");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 require("dotenv").config();
 
@@ -36,5 +37,26 @@ router.post("/signup", async (req, res) => {
       .json({ message: "Internal server error: " + error.message });
   }
 });
+router.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({ message: "Please fill all fields" });
+    }
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: "User not found" });
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
 
+    if (isMatch) {
+      // res.send("matched");
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY);
+      res.cookie("token", token);
+      res.send({ token });
+    } else {
+      return res.status(400).json({ message: "Invalid credentials" });
+    }
+  } catch (error) {}
+});
 module.exports = router;
