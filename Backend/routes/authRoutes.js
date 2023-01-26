@@ -10,7 +10,7 @@ require("dotenv").config();
 router.post("/signup", async (req, res) => {
   try {
     // console.log(req.body);
-    const { name, email, password, dob } = req.body;
+    const { name, email, password, dob, address } = req.body;
 
     if (!name || !email || !password || !dob) {
       return res.status(400).json({ message: "Please fill all fields" });
@@ -24,6 +24,7 @@ router.post("/signup", async (req, res) => {
         email,
         password,
         dob,
+        address,
       });
       await newUser.save();
       //   res.send({ message: "user has been registered" });
