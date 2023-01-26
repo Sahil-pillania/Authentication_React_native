@@ -57,6 +57,7 @@ const module = {
     justifyContent: "center",
     width: "80%",
     alignItems: "center",
+    marginBottom: 20,
   },
   button1: {
     width: "90%",

@@ -29,7 +29,7 @@ router.post("/signup", async (req, res) => {
       //   res.send({ message: "user has been registered" });
       const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY);
       res.cookie("token", token);
-      res.send({ token });
+      res.send({ token, data: "User created successfully." });
     }
   } catch (error) {
     return res
