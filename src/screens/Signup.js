@@ -51,17 +51,25 @@ const Signup = () => {
       return;
     } else {
       try {
-        const jsonData = await fetch("http://localhost:3000/signup", {
+        console.log("Fetching data...");
+        fetch("http://10.0.2.2:3000/signup", {
           method: "POST",
           headers: {
+            Accept: "application/json",
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formdata),
-        });
-        const data = jsonData.json();
-        if (data.data == "User created successfully.") {
-          console.log("successful");
-        }
+        })
+          .then((response) => response.json())
+          .then((json) => {
+            // return json.movies;
+            console.log("data");
+            Navigation.navigate("login");
+          })
+          .catch((error) => {
+            console.error(error);
+            setErrorMsg(error.message);
+          });
       } catch (error) {
         console.log(error.message);
       }
