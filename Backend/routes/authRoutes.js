@@ -11,6 +11,7 @@ require("dotenv").config();
 // nodemailer
 async function mailer(receiverEmail, code) {
   console.log("Sending email...");
+  console.log(receiverEmail, code);
   let testAccount = await nodemailer.createTestAccount();
 
   // create reusable transporter object using the default SMTP transport
@@ -20,13 +21,13 @@ async function mailer(receiverEmail, code) {
     secure: false, // true for 465, false for other ports
     auth: {
       user: "sahiltest03@gmail.com", // generated ethereal user
-      pass: "zqbefgyodnfzlyls", // generated ethereal password
+      pass: "vkqijeyhdkwyfczy", // generated ethereal password
     },
   });
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: "Confirm messege - Verification", // sender address
+    from: "sahiltest03@gmail.com", // sender address
     to: `${receiverEmail}`, // list of receivers
     subject: "Signup verification", // Subject line
     text: "Please verify your code.", // plain text body
@@ -86,7 +87,7 @@ router.post("/verify", async (req, res) => {
           code,
         },
       ];
-      const response = await mailer(email, code);
+      await mailer(email, code);
       res.send({
         message: "Verification code sent to your email address",
         user,
