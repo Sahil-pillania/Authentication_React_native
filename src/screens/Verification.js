@@ -5,10 +5,13 @@ import {
   TouchableOpacity,
   StatusBar,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import module from "../common/formcss";
 
-const Verification = ({ navigation }) => {
+const Verification = ({ navigation, route }) => {
+  const { userData } = route.params;
+  console.log(userData);
+  console.log("from verification page : ", userData[0]?.code);
   return (
     <View style={styles.container}>
       <StatusBar />
