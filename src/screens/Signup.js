@@ -52,7 +52,7 @@ const Signup = ({ navigation }) => {
     } else {
       try {
         console.log("Fetching data...");
-        fetch("http://192.168.41.17:3000/signup", {
+        fetch("http://192.168.41.17:3000/verify", {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -61,18 +61,24 @@ const Signup = ({ navigation }) => {
           body: JSON.stringify(formdata),
         })
           .then((response) => response.json())
-          .then((json) => {
+          .then((data) => {
             // return json.movies;
-            alert("Signup successful! You can login now.");
-            setFormdata({
-              name: "",
-              email: "",
-              dob: "",
-              password: "",
-              c_password: "",
-              address: "",
-            });
-            navigation.navigate("login");
+            console.log(data);
+            if (
+              (data.message = "Verification code sent to your email address")
+            ) {
+              alert("Verification code sent to your email address.");
+              // setFormdata({
+              //   name: "",
+              //   email: "",
+              //   dob: "",
+              //   password: "",
+              //   c_password: "",
+              //   address: "",
+              // });
+
+              navigation.navigate("verification", { userData: data.user });
+            }
           })
           .catch((error) => {
             console.error(error);
@@ -189,7 +195,7 @@ const Signup = ({ navigation }) => {
               onPress={() => onSubmit()}
               style={styles.buttonContTouch}
             >
-              <Text style={module.button1}>Login</Text>
+              <Text style={module.button1}> Send OTP</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
