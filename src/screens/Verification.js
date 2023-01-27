@@ -13,7 +13,7 @@ import img from "../../assets/code.png";
 import module from "../common/formcss";
 
 const Verification = ({ navigation, route }) => {
-  // const { userData } = route.params;
+  const { userData } = route.params;
   // console.log(userData);
   // console.log("from verification page : ", userData[0]?.code);
 
@@ -27,7 +27,7 @@ const Verification = ({ navigation, route }) => {
   }, []);
 
   const onsubmit = () => {
-    console.log(data);
+    // console.log(data);
     if (userCode == "XXXX" || actualCode == "") {
       setError("Please enter a valid code.");
       return;
@@ -43,7 +43,7 @@ const Verification = ({ navigation, route }) => {
         dob: userData[0].dob,
       };
 
-      fetch("http://10.0.2.2:3000/signup", {
+      fetch("http://192.168.41.17:3000/signup", {
         method: "POST",
         headers: {
           Accept: "application/json",

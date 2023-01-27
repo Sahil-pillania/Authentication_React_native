@@ -52,7 +52,7 @@ const Signup = ({ navigation }) => {
     } else {
       try {
         console.log("Fetching data...");
-        fetch("http://10.0.2.2:3000/verify", {
+        fetch("http://192.168.41.17:3000/verify", {
           method: "POST",
           headers: {
             Accept: "application/json",
