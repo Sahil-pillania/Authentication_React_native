@@ -1,21 +1,30 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
 import React from "react";
 import module from "../common/formcss";
 
 const Homepage = ({ navigation }) => {
   return (
-    <View>
+    <View style={styles.container}>
+      <StatusBar />
       <Text style={module.head1}>Homepage</Text>
-      <TouchableOpacity style={styles.buttonContTouch}>
-        <Text
-          style={module.button1}
-          onPress={() => {
-            navigation.navigate("login");
-          }}
-        >
-          Login
-        </Text>
-      </TouchableOpacity>
+      <View style={module.buttonCont}>
+        <TouchableOpacity style={styles.buttonContTouch}>
+          <Text
+            style={module.button2}
+            onPress={() => {
+              navigation.navigate("login");
+            }}
+          >
+            Logout
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -23,12 +32,20 @@ const Homepage = ({ navigation }) => {
 export default Homepage;
 
 const styles = StyleSheet.create({
-  buttonContTouch: {
-    alignItems: "center",
-    width: "100%",
+  container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    left: 40,
+    backgroundColor: "#fff",
+    // paddingTop: 170,
+    // width: "100%",
+  },
+  buttonContTouch: {
+    alignItems: "center",
+    width: "100%",
+    // flex: 1,
+    // justifyContent: "center",
+    // alignItems: "center",
+    // left: 40,
   },
 });

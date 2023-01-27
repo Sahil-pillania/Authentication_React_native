@@ -71,5 +71,18 @@ const module = {
     textAlign: "center",
     zIndex: 1,
   },
+  button2: {
+    width: "90%",
+    marginHorizontal: 10,
+    marginVertical: 10,
+    backgroundColor: "orange",
+    padding: 5,
+    paddingHorizontal: 30,
+    borderRadius: 15,
+    fontSize: 25,
+    textAlign: "center",
+    zIndex: 1,
+    borderWidth: 2,
+  },
 };
 export default module;
