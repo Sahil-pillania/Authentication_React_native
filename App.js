@@ -5,6 +5,7 @@ import Welcome from "./src/screens/Welcome";
 import Homepage from "./src/screens/Homepage";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Verification from "./src/screens/Verification";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -32,8 +33,14 @@ export default function App() {
           component={Homepage}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="verification"
+          component={Verification}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
+
     // {/* <Welcome /> */}
     // {/* <Login /> */}
     // {/* <Signup /> */}
