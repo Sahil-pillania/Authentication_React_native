@@ -12,7 +12,7 @@ import React, { useState } from "react";
 import img from "../../assets/code.png";
 import module from "../common/formcss";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -24,7 +24,7 @@ const Login = () => {
       return;
     }
     console.log(data);
-    fetch("http://localhost:3000/login", {
+    fetch("http://192.168.41.17:3000/login", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -37,8 +37,12 @@ const Login = () => {
         if (json.error) {
         } else {
           console.log("success");
-          Navigation.navigate("Home");
           alert("Logged in successfully");
+          setData({
+            email: "",
+            password: "",
+          });
+          navigation.navigate("home");
         }
       })
       .catch((error) => {

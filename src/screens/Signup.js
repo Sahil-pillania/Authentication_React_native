@@ -12,7 +12,7 @@ import React, { useState } from "react";
 import img from "../../assets/code.png";
 import module from "../common/formcss";
 
-const Signup = () => {
+const Signup = ({ navigation }) => {
   const [formdata, setFormdata] = useState({
     name: "",
     email: "",
@@ -52,7 +52,7 @@ const Signup = () => {
     } else {
       try {
         console.log("Fetching data...");
-        fetch("http://10.0.2.2:3000/signup", {
+        fetch("http://192.168.41.17:3000/signup", {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -63,8 +63,16 @@ const Signup = () => {
           .then((response) => response.json())
           .then((json) => {
             // return json.movies;
-            console.log("data");
-            Navigation.navigate("login");
+            alert("Signup successful! You can login now.");
+            setFormdata({
+              name: "",
+              email: "",
+              dob: "",
+              password: "",
+              c_password: "",
+              address: "",
+            });
+            navigation.navigate("login");
           })
           .catch((error) => {
             console.error(error);
