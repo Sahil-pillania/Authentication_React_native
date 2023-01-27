@@ -10,6 +10,7 @@ require("dotenv").config();
 
 // nodemailer
 async function mailer(receiverEmail, code) {
+  console.log("Sending email...");
   let testAccount = await nodemailer.createTestAccount();
 
   // create reusable transporter object using the default SMTP transport
@@ -41,26 +42,20 @@ router.post("/signup", async (req, res) => {
     // console.log(req.body);
     const { name, email, password, dob, address } = req.body;
 
-    if (!name || !email || !password || !dob) {
-      return res.status(400).json({ message: "Please fill all fields" });
-    }
-    const user = await User.findOne({ email });
-    if (user) {
-      return res.status(400).json({ message: "User is already registered" });
-    } else {
-      const newUser = new User({
-        name,
-        email,
-        password,
-        dob,
-        address,
-      });
-      await newUser.save();
-      //   res.send({ message: "user has been registered" });
-      const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY);
-      res.cookie("token", token);
-      res.send({ token, data: "User created successfully." });
-    }
+    //  const user = await User.findOne({ email });
+
+    const newUser = new User({
+      name,
+      email,
+      password,
+      dob,
+      address,
+    });
+    await newUser.save();
+    //   res.send({ message: "user has been registered" });
+    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY);
+    res.cookie("token", token);
+    res.send({ token, data: "User created successfully." });
   } catch (error) {
     return res
       .status(200)

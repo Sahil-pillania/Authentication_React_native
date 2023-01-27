@@ -32,7 +32,7 @@ const Signup = ({ navigation }) => {
   // };
   const onSubmit = async () => {
     setErrorMsg(null);
-    console.log(formdata);
+    // console.log(formdata);
     if (
       formdata.name == "" ||
       formdata.email === "" ||
@@ -52,7 +52,7 @@ const Signup = ({ navigation }) => {
     } else {
       try {
         console.log("Fetching data...");
-        fetch("http://192.168.41.17:3000/verify", {
+        fetch("http://10.0.2.2:3000/verify", {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -68,16 +68,10 @@ const Signup = ({ navigation }) => {
               (data.message = "Verification code sent to your email address")
             ) {
               alert("Verification code sent to your email address.");
-              // setFormdata({
-              //   name: "",
-              //   email: "",
-              //   dob: "",
-              //   password: "",
-              //   c_password: "",
-              //   address: "",
-              // });
 
               navigation.navigate("verification", { userData: data.user });
+            } else {
+              console.log(data.error);
             }
           })
           .catch((error) => {
