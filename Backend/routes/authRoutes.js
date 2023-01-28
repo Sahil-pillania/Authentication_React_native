@@ -16,19 +16,19 @@ async function mailer(receiverEmail, code) {
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    service: "<gmail>",
-    host: "<smtp.gmail.com>",
+    // service: "<gmail>",        // service type
+    // host: "<smtp.gmail.com>", // Your server host
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: "<example@gmail.com", // generated ethereal user
-      pass: "<passcode>", // generated ethereal password
+      user: "<example@gmail.com", // your mail id
+      pass: "<passcode>", // your mail id auth passcode
     },
   });
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: "sahiltest03@gmail.com", // sender address
+    from: "<From>", // sender address
     to: `${receiverEmail}`, // list of receivers
     subject: "Signup verification", // Subject line
     text: "Please verify your code.", // plain text body
