@@ -12,16 +12,17 @@ require("dotenv").config();
 async function mailer(receiverEmail, code) {
   console.log("Sending email...");
   console.log(receiverEmail, code);
-  let testAccount = await nodemailer.createTestAccount();
+  // let testAccount = await nodemailer.createTestAccount();
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    service: "<gmail>",
+    host: "<smtp.gmail.com>",
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: "sahiltest03@gmail.com", // generated ethereal user
-      pass: "vkqijeyhdkwyfczy", // generated ethereal password
+      user: "<example@gmail.com", // generated ethereal user
+      pass: "<passcode>", // generated ethereal password
     },
   });
 
@@ -94,7 +95,7 @@ router.post("/verify", async (req, res) => {
       });
     }
   } catch (error) {
-    console.log("error occured - catch statement");
+    console.log("error occured - catch statement", error.message);
     return res.status(200);
   }
 });
