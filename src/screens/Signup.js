@@ -55,7 +55,6 @@ const Signup = ({ navigation }) => {
         fetch("http://192.168.41.17:3000/verify", {
           method: "POST",
           headers: {
-            Accept: "application/json",
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formdata),

@@ -75,7 +75,7 @@ const Verification = ({ navigation, route }) => {
         <ScrollView>
           <Text style={module.head1}>Verification</Text>
           <Text style={module.head2}>Code has been sent to your Email</Text>
-          {error ? <Text style={styles.warning}>{error}</Text> : null}
+          {error != null ? <Text style={styles.warning}>{error}</Text> : null}
 
           <View style={module.formgroup}>
             <Text style={module.label}>Verify your OTP to continue</Text>
